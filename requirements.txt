@@ -1,0 +1,25 @@
+# Основні бібліотеки для YOLOv8 Object Detection Training
+
+# YOLOv8 і залежності
+ultralytics>=8.0.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Обробка зображень
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+Pillow>=10.0.0
+
+# Візуалізація та аналіз
+matplotlib>=3.7.0
+seaborn>=0.12.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Робота з даними
+PyYAML>=6.0
+tqdm>=4.65.0
+
+# Додатково (опціонально)
+tensorboard>=2.13.0
+scikit-learn>=1.3.0

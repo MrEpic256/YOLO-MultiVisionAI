@@ -1,0 +1,63 @@
+# Датасет (занадто великий для GitHub)
+Microsoft COCO.v2-raw.yolov8/
+
+# Навчені моделі та результати
+runs/
+*.pt
+*.pth
+*.weights
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Тимчасові файли
+*.log
+*.tmp
+temp/
+tmp/
+
+# Інше
+.qodo/
+.cursor/
+.snapshots/
