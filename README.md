@@ -1,139 +1,139 @@
 # 🎯 YOLO-MultiVisionAI
 
-YOLOv8 Object Detection Training Pipeline на датасеті Microsoft COCO.
+YOLOv8 Object Detection Training Pipeline on Microsoft COCO Dataset.
 
-## 📊 Про проект
+## 📊 About the Project
 
-Проект для навчання моделі YOLOv8 на 80 класах об'єктів з датасету COCO 2017.
+A comprehensive project for training YOLOv8 models on 80 object classes from the COCO 2017 dataset.
 
-- **Модель**: YOLOv8n (nano)
-- **Датасет**: Microsoft COCO 2017 (116,408 train / 5,000 val)
-- **Класів**: 80 (люди, автомобілі, тварини, предмети)
+- **Model**: YOLOv8n (nano)
+- **Dataset**: Microsoft COCO 2017 (116,408 train / 5,000 val)
+- **Classes**: 80 (people, vehicles, animals, objects)
 - **Framework**: Ultralytics YOLOv8
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
-### 1. Клонувати репозиторій
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOLO-MultiVisionAI.git
+git clone https://github.com/MrEpic256/YOLO-MultiVisionAI.git
 cd YOLO-MultiVisionAI
 ```
 
-### 2. Встановити залежності
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Завантажити датасет
+### 3. Download Dataset
 
-Завантажте [Microsoft COCO Dataset](https://universe.roboflow.com/jacob-solawetz/microsoft-coco/dataset/2) у форматі YOLOv8 та розпакуйте в папку `Microsoft COCO.v2-raw.yolov8/`
+Download the [Microsoft COCO Dataset](https://universe.roboflow.com/jacob-solawetz/microsoft-coco/dataset/2) in YOLOv8 format and extract it to the `Microsoft COCO.v2-raw.yolov8/` folder.
 
-### 4. Перевірити датасет
+### 4. Verify Dataset
 
 ```bash
 python check_dataset.py
 ```
 
-### 5. Запустити навчання
+### 5. Start Training
 
 ```bash
 python train_yolov8.py
 ```
 
-або (для Windows):
+or (for Windows):
 
 ```bash
 .\start_training.bat
 ```
 
-### 6. Тестування моделі
+### 6. Test the Model
 
 ```bash
 python test_yolov8.py
 ```
 
-## 📁 Структура проекту
+## 📁 Project Structure
 
 ```
 YOLO-MultiVisionAI/
-├── train_yolov8.py          # Скрипт навчання
-├── test_yolov8.py           # Скрипт тестування
-├── check_dataset.py         # Перевірка датасету
-├── coco_dataset.yaml        # Конфігурація датасету
-├── requirements.txt         # Залежності Python
-├── start_training.bat       # Батч-файл для Windows
-└── README.md                # Документація
+├── train_yolov8.py          # Training script
+├── test_yolov8.py           # Testing script
+├── check_dataset.py         # Dataset verification
+├── coco_dataset.yaml        # Dataset configuration
+├── requirements.txt         # Python dependencies
+├── start_training.bat       # Windows batch file
+└── README.md                # Documentation
 ```
 
-## 🎯 Параметри навчання
+## 🎯 Training Parameters
 
-- **Епохи**: 10 (можна змінити в `train_yolov8.py`)
+- **Epochs**: 10 (can be changed in `train_yolov8.py`)
 - **Batch size**: 16
-- **Розмір зображення**: 640x640
-- **Data augmentation**: так (HSV, flip, translate, scale, mosaic)
-- **Device**: GPU (CUDA) якщо доступний, інакше CPU
+- **Image size**: 640x640
+- **Data augmentation**: yes (HSV, flip, translate, scale, mosaic)
+- **Device**: GPU (CUDA) if available, otherwise CPU
 
-## 📊 Результати навчання
+## 📊 Training Results
 
-Після навчання моделі зберігаються в:
+After training, models are saved in:
 
 ```
 runs/detect/coco_yolov8_train/
 ├── weights/
-│   ├── best.pt      # Найкраща модель
-│   └── last.pt      # Остання епоха
-└── results.png      # Графіки метрик
+│   ├── best.pt      # Best model
+│   └── last.pt      # Last epoch
+└── results.png      # Metrics plots
 ```
 
-### Очікувані метрики (10 епох):
+### Expected Metrics (10 epochs)
 
 - **mAP50**: ~43%
 - **mAP50-95**: ~30%
 - **Precision**: ~57%
 - **Recall**: ~40%
 
-## 💻 Використання навченої моделі
+## 💻 Using the Trained Model
 
 ```python
 from ultralytics import YOLO
 
-# Завантажити модель
+# Load model
 model = YOLO('runs/detect/coco_yolov8_train/weights/best.pt')
 
-# Детекція на зображенні
+# Detect on image
 results = model('image.jpg')
 results[0].show()
 
-# Детекція на відео
+# Detect on video
 results = model('video.mp4')
 ```
 
-## 📦 Системні вимоги
+## 📦 System Requirements
 
-**Мінімальні:**
+**Minimum:**
 - Python 3.8+
 - 8 GB RAM
-- 10 GB вільного місця
+- 10 GB free disk space
 
-**Рекомендовані:**
+**Recommended:**
 - Python 3.10+
 - 16 GB RAM
-- NVIDIA GPU з 6+ GB VRAM
+- NVIDIA GPU with 6+ GB VRAM
 - CUDA 11.8+
 
-## 📚 Детальна документація
+## 📚 Detailed Documentation
 
-Дивіться [README_YOLO_TRAINING.md](README_YOLO_TRAINING.md) для детальної інформації про:
-- Параметри навчання
+See [README_YOLO_TRAINING.md](README_YOLO_TRAINING.md) for detailed information about:
+- Training parameters
 - Data augmentation
 - Troubleshooting
-- Оптимізацію моделі
+- Model optimization
 
-## 📝 Ліцензія
+## 📝 License
 
-- **Код**: MIT License
+- **Code**: MIT License
 - **COCO Dataset**: CC BY 4.0
 
 ## 🙏 Acknowledgments

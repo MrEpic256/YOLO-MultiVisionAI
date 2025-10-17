@@ -1,189 +1,189 @@
 # 🎯 YOLOv8 Object Detection Training Pipeline
 
-Проект для навчання моделі YOLOv8 на датасеті Microsoft COCO для детекції об'єктів.
+A comprehensive guide for training YOLOv8 models on the Microsoft COCO dataset for object detection.
 
-## 📊 Датасет
+## 📊 Dataset
 
-**Microsoft COCO 2017** - один з найбільших датасетів для детекції об'єктів:
-- **80 класів**: люди, автомобілі, тварини, предмети побуту тощо
-- **Train**: 116,408 зображень
-- **Validation**: 5,000 зображень
-- **Формат**: YOLOv8 (нормалізовані координати)
+**Microsoft COCO 2017** - one of the largest object detection datasets:
+- **80 classes**: people, vehicles, animals, household items, etc.
+- **Train**: 116,408 images
+- **Validation**: 5,000 images
+- **Format**: YOLOv8 (normalized coordinates)
 
-### Класи об'єктів (приклади):
-- **Транспорт**: car, bicycle, motorbike, bus, truck, train, boat, aeroplane
-- **Люди**: person
-- **Тварини**: dog, cat, horse, cow, sheep, elephant, bear, zebra, giraffe
-- **Предмети**: chair, sofa, bed, bottle, cup, laptop, cell phone, book
-- **Їжа**: banana, apple, pizza, sandwich, orange, hot dog, cake
+### Object Classes (examples):
+- **Transportation**: car, bicycle, motorbike, bus, truck, train, boat, aeroplane
+- **People**: person
+- **Animals**: dog, cat, horse, cow, sheep, elephant, bear, zebra, giraffe
+- **Objects**: chair, sofa, bed, bottle, cup, laptop, cell phone, book
+- **Food**: banana, apple, pizza, sandwich, orange, hot dog, cake
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
-### 1. Встановлення залежностей
+### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Перевірка датасету
+### 2. Verify Dataset
 
 ```bash
 python check_dataset.py
 ```
 
-Цей скрипт перевірить структуру датасету та виведе статистику.
+This script will verify the dataset structure and display statistics.
 
-### 3. Навчання моделі
+### 3. Train the Model
 
 ```bash
 python train_yolov8.py
 ```
 
-**Параметри навчання:**
-- Модель: `yolov8n.pt` (nano - швидка, легка)
-- Епохи: 100
+**Training Parameters:**
+- Model: `yolov8n.pt` (nano - fast, lightweight)
+- Epochs: 10
 - Batch size: 16
-- Розмір зображення: 640x640
-- Device: GPU (якщо доступний) або CPU
-- Data augmentation: так (обертання, масштабування, яскравість)
+- Image size: 640x640
+- Device: GPU (if available) or CPU
+- Data augmentation: yes (rotation, scaling, brightness)
 
-**Альтернативні моделі** (можна змінити в `train_yolov8.py`):
-- `yolov8n.pt` - Nano (найшвидша, найменша)
+**Alternative Models** (can be changed in `train_yolov8.py`):
+- `yolov8n.pt` - Nano (fastest, smallest)
 - `yolov8s.pt` - Small
-- `yolov8m.pt` - Medium (рекомендується)
+- `yolov8m.pt` - Medium (recommended)
 - `yolov8l.pt` - Large
-- `yolov8x.pt` - Extra Large (найточніша, найповільніша)
+- `yolov8x.pt` - Extra Large (most accurate, slowest)
 
-### 4. Тестування моделі
+### 4. Test the Model
 
 ```bash
 python test_yolov8.py
 ```
 
-Скрипт виконає:
-- ✅ Валідацію на повному valid датасеті
-- ✅ Тестування на 10 випадкових зображеннях
-- ✅ Візуалізацію результатів
-- ✅ Створення звіту з метриками
+The script will perform:
+- ✅ Validation on the full validation dataset
+- ✅ Testing on 10 random images
+- ✅ Visualization of results
+- ✅ Generation of metrics report
 
-## 📁 Структура проекту
+## 📁 Project Structure
 
 ```
 YOLO-MultiVisionAI/
 │
-├── Microsoft COCO.v2-raw.yolov8/    # Датасет
+├── Microsoft COCO.v2-raw.yolov8/    # Dataset
 │   ├── train/
-│   │   ├── images/                   # Тренувальні зображення
-│   │   └── labels/                   # Анотації YOLO format
+│   │   ├── images/                   # Training images
+│   │   └── labels/                   # YOLO format annotations
 │   ├── valid/
-│   │   ├── images/                   # Валідаційні зображення
-│   │   └── labels/                   # Анотації YOLO format
-│   └── data.yaml                     # Оригінальна конфігурація
+│   │   ├── images/                   # Validation images
+│   │   └── labels/                   # YOLO format annotations
+│   └── data.yaml                     # Original configuration
 │
-├── coco_dataset.yaml                 # Конфігурація для навчання
-├── train_yolov8.py                   # Скрипт навчання
-├── test_yolov8.py                    # Скрипт тестування
-├── check_dataset.py                  # Перевірка датасету
-├── requirements.txt                  # Залежності
+├── coco_dataset.yaml                 # Training configuration
+├── train_yolov8.py                   # Training script
+├── test_yolov8.py                    # Testing script
+├── check_dataset.py                  # Dataset verification
+├── requirements.txt                  # Dependencies
 │
-└── runs/detect/coco_yolov8_train/   # Результати навчання
+└── runs/detect/coco_yolov8_train/   # Training results
     ├── weights/
-    │   ├── best.pt                   # 🏆 Найкраща модель
-    │   └── last.pt                   # Остання епоха
-    ├── results.png                   # Графіки метрик
-    ├── confusion_matrix.png          # Матриця помилок
-    └── ...                           # Інші графіки
+    │   ├── best.pt                   # 🏆 Best model
+    │   └── last.pt                   # Last epoch
+    ├── results.png                   # Metrics plots
+    ├── confusion_matrix.png          # Confusion matrix
+    └── ...                           # Other plots
 ```
 
-## 📊 Метрики якості
+## 📊 Quality Metrics
 
-Після навчання ви отримаєте такі метрики:
+After training, you will obtain the following metrics:
 
 - **mAP50** - Mean Average Precision @ IoU=0.5
-- **mAP50-95** - Mean Average Precision @ IoU=0.5:0.95 (основна метрика COCO)
-- **Precision** - Точність (скільки з передбачених об'єктів справді правильні)
-- **Recall** - Повнота (скільки об'єктів з датасету знайдено)
+- **mAP50-95** - Mean Average Precision @ IoU=0.5:0.95 (main COCO metric)
+- **Precision** - How many predicted objects are actually correct
+- **Recall** - How many objects from the dataset were found
 
-### Очікувані результати для YOLOv8n:
+### Expected Results for YOLOv8n:
 - mAP50-95: ~37-40%
 - mAP50: ~53-56%
-- Швидкість: ~100+ FPS на RTX 3080
+- Speed: ~100+ FPS on RTX 3080
 
-## 🎨 Візуалізація результатів
+## 🎨 Results Visualization
 
-Після тестування (`test_yolov8.py`) у папці `test_results/` з'являться:
-- 10 зображень з виявленими об'єктами (bounding boxes)
-- `summary_grid.png` - grid з 4 прикладами
-- Звіт у консолі з топ-10 найчастіших класів
+After testing (`test_yolov8.py`), the `test_results/` folder will contain:
+- 10 images with detected objects (bounding boxes)
+- `summary_grid.png` - grid with 4 examples
+- Console report with top-10 most frequent classes
 
-## 🔧 Налаштування
+## 🔧 Configuration
 
-### Зміна параметрів навчання
+### Changing Training Parameters
 
-Відредагуйте `train_yolov8.py`:
+Edit `train_yolov8.py`:
 
 ```python
 config = {
-    'model': 'yolov8m.pt',     # Змінити модель
-    'epochs': 150,             # Більше епох
-    'batch': 32,               # Більший batch (потребує більше GPU пам'яті)
-    'imgsz': 640,              # Розмір зображення
-    'patience': 50,            # Ранній стоп
+    'model': 'yolov8m.pt',     # Change model
+    'epochs': 150,             # More epochs
+    'batch': 32,               # Larger batch (requires more GPU memory)
+    'imgsz': 640,              # Image size
+    'patience': 50,            # Early stopping
 }
 ```
 
 ### Data Augmentation
 
-У `train_yolov8.py` налаштовані такі augmentation:
+The following augmentations are configured in `train_yolov8.py`:
 - Horizontal flip (50%)
-- HSV колір (hue, saturation, value)
+- HSV color (hue, saturation, value)
 - Translation (10%)
 - Scale (50%)
 - Mosaic (100%)
 
-## 💾 Системні вимоги
+## 💾 System Requirements
 
-**Мінімальні:**
+**Minimum:**
 - Python 3.8+
 - 8 GB RAM
-- 10 GB вільного місця на диску
+- 10 GB free disk space
 
-**Рекомендовані:**
+**Recommended:**
 - Python 3.10+
 - 16 GB RAM
-- NVIDIA GPU з 6+ GB VRAM
+- NVIDIA GPU with 6+ GB VRAM
 - CUDA 11.8+
-- 20 GB вільного місця на диску
+- 20 GB free disk space
 
 ## 🐛 Troubleshooting
 
-### Помилка: Out of Memory (OOM)
-Зменшіть `batch` size у `train_yolov8.py`:
+### Error: Out of Memory (OOM)
+Reduce the `batch` size in `train_yolov8.py`:
 ```python
-'batch': 8,  # або навіть 4
+'batch': 8,  # or even 4
 ```
 
-### Помилка: CUDA not available
-Навчання відбудеться на CPU (повільно). Для прискорення:
-1. Встановіть CUDA Toolkit
-2. Встановіть PyTorch з CUDA: `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118`
+### Error: CUDA not available
+Training will run on CPU (slow). To speed up:
+1. Install CUDA Toolkit
+2. Install PyTorch with CUDA: `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118`
 
-### Повільне навчання
-- Використайте меншу модель (`yolov8n.pt`)
-- Зменшіть `imgsz` до 416 або 320
-- Зменшіть кількість `workers`
+### Slow Training
+- Use a smaller model (`yolov8n.pt`)
+- Reduce `imgsz` to 416 or 320
+- Reduce the number of `workers`
 
-## 📚 Додаткові ресурси
+## 📚 Additional Resources
 
 - [Ultralytics YOLOv8 Docs](https://docs.ultralytics.com/)
 - [COCO Dataset](https://cocodataset.org/)
 - [YOLOv8 GitHub](https://github.com/ultralytics/ultralytics)
 
-## 📝 Ліцензія
+## 📝 License
 
-- **Код**: MIT License
+- **Code**: MIT License
 - **COCO Dataset**: CC BY 4.0
 
 ---
 
-**Успіхів у навчанні! 🚀**
+**Happy Training! 🚀**
