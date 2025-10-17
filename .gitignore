@@ -1,11 +1,13 @@
 # Датасет (занадто великий для GitHub)
 Microsoft COCO.v2-raw.yolov8/
 
-# Навчені моделі та результати
-runs/
-*.pt
-*.pth
-*.weights
+# Виключаємо тільки важкі файли моделей з runs/, але залишаємо графіки та метрики
+runs/**/weights/*.pt
+runs/**/*.pth
+runs/**/*.weights
+
+# Базові моделі YOLOv8 в корні - дозволяємо (для швидкого старту)
+# yolov8n.pt та yolo11n.pt можна завантажити
 
 # Python
 __pycache__/
